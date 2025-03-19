@@ -1,7 +1,7 @@
 --Latest Data Check
 
 SELECT * FROM MY_DATABASE.MY_SCHEMA.STOCK_HISTORY
-WHERE end_date = '2099-12-31 23:59:59'  -- 🔹 Instead of "is_current = TRUE"
+WHERE end_date = '2099-12-31 23:59:59'  --  Instead of "is_current = TRUE"
 ORDER BY datetime DESC
 LIMIT 10;
 
@@ -9,7 +9,7 @@ LIMIT 10;
 ---Historical Data Check
 
 SELECT * FROM MY_DATABASE.MY_SCHEMA.STOCK_HISTORY
-WHERE end_date != '2099-12-31 23:59:59'  -- 🔹 Instead of "IS NOT NULL"
+WHERE end_date != '2099-12-31 23:59:59'  --  Instead of "IS NOT NULL"
 ORDER BY end_date DESC
 LIMIT 10;
 
@@ -18,7 +18,7 @@ LIMIT 10;
 
 SELECT stock_symbol, MAX(datetime) AS last_data_time
 FROM MY_DATABASE.MY_SCHEMA.STOCK_HISTORY
-WHERE DATE(datetime) = CURRENT_DATE  -- 🔹 Ensures today’s data exists
+WHERE DATE(datetime) = CURRENT_DATE  -- Ensures today’s data exists
 GROUP BY stock_symbol;
 
 
