@@ -96,7 +96,7 @@ LANGUAGE SQL
 AS
 $$
 BEGIN
-    -- ✅ Expire old AAPL records if the open price has changed
+    --  Expire old AAPL records if the open price has changed
     UPDATE MY_DATABASE.MY_SCHEMA.FINAL_STOCK_TABLE t
     SET end_date = CURRENT_DATE, indicator = 0
     WHERE indicator = 1
@@ -108,7 +108,7 @@ BEGIN
         AND t.open <> s.close
     );
 
-    -- ✅ Expire old TSLA records if the open price has changed
+    -- Expire old TSLA records if the open price has changed
     UPDATE MY_DATABASE.MY_SCHEMA.FINAL_STOCK_TABLE t
     SET end_date = CURRENT_DATE, indicator = 0
     WHERE indicator = 1
@@ -120,14 +120,14 @@ BEGIN
         AND t.open <> s.close
     );
 
-    -- ✅ Insert a new AAPL record
+    --  Insert a new AAPL record
     INSERT INTO MY_DATABASE.MY_SCHEMA.FINAL_STOCK_TABLE
     (symbol, start_date, end_date, open, close, high, low, volume, indicator)
     SELECT 
         s.symbol,
         CURRENT_DATE,
         '2099-12-31',
-        t.close,  -- ✅ Yesterday's close becomes today's open
+        t.close,  --  Yesterday's close becomes today's open
         s.close, 
         s.high, 
         s.low, 
@@ -140,7 +140,7 @@ BEGIN
     AND t.indicator = 0
     LIMIT 1;
 
-    -- ✅ Insert a new TSLA record
+    --  Insert a new TSLA record
     INSERT INTO MY_DATABASE.MY_SCHEMA.FINAL_STOCK_TABLE
     (symbol, start_date, end_date, open, close, high, low, volume, indicator)
     SELECT 
@@ -160,7 +160,7 @@ BEGIN
     AND t.indicator = 0
     LIMIT 1;
 
-    RETURN '✅ FINAL_STOCK_TABLE Updated Successfully!';
+    RETURN 'FINAL_STOCK_TABLE Updated Successfully!';
 END;
 $$;
 
