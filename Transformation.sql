@@ -35,7 +35,7 @@
 --     SELECT 1 FROM MY_DATABASE.MY_SCHEMA.AAPL_STAGING s
 --     WHERE t.symbol = s.symbol
 --     AND t.end_date = '2099-12-31'
---     AND t.open <> s.close  -- ✅ Only update if today's open ≠ yesterday's close
+--     AND t.open <> s.close  -- Only update if today's open ≠ yesterday's close
 -- );
 
 
@@ -43,18 +43,18 @@
 -- (symbol, start_date, end_date, open, close, high, low, volume, indicator)
 -- SELECT 
 --     s.symbol,
---     CURRENT_DATE,  -- ✅ Today's start date
---     '2099-12-31',  -- ✅ Active till future update
---     t.close,  -- ✅ Yesterday's close becomes today's open
+--     CURRENT_DATE,  -- Today's start date
+--     '2099-12-31',  --  Active till future update
+--     t.close,  -- Yesterday's close becomes today's open
 --     s.close, 
 --     s.high, 
 --     s.low, 
 --     s.volume,
---     1              -- ✅ Active indicator
+--     1              --  Active indicator
 -- FROM MY_DATABASE.MY_SCHEMA.AAPL_STAGING s
 -- JOIN MY_DATABASE.MY_SCHEMA.FINAL_STOCK_TABLE t
 -- ON s.symbol = t.symbol
--- WHERE t.end_date = CURRENT_DATE  -- ✅ Expired records only
+-- WHERE t.end_date = CURRENT_DATE  --  Expired records only
 -- LIMIT 1;
 
 
@@ -66,25 +66,25 @@
 --     SELECT 1 FROM MY_DATABASE.MY_SCHEMA.TSLA_STAGING s
 --     WHERE t.symbol = s.symbol
 --     AND t.end_date = '2099-12-31'
---     AND t.open <> s.close  -- ✅ Only update if today's open ≠ yesterday's close
+--     AND t.open <> s.close  --Only update if today's open ≠ yesterday's close
 -- );
 
 -- INSERT INTO MY_DATABASE.MY_SCHEMA.FINAL_STOCK_TABLE
 -- (symbol, start_date, end_date, open, close, high, low, volume, indicator)
 -- SELECT 
 --     s.symbol,
---     CURRENT_DATE,  -- ✅ Today's start date
---     '2099-12-31',  -- ✅ Active till future update
---     t.close,  -- ✅ Yesterday's close becomes today's open
+--     CURRENT_DATE,  --  Today's start date
+--     '2099-12-31',  -- Active till future update
+--     t.close,  -- Yesterday's close becomes today's open
 --     s.close, 
 --     s.high, 
 --     s.low, 
 --     s.volume,
---     1              -- ✅ Active indicator
+--     1              --  Active indicator
 -- FROM MY_DATABASE.MY_SCHEMA.TSLA_STAGING s
 -- JOIN MY_DATABASE.MY_SCHEMA.FINAL_STOCK_TABLE t
 -- ON s.symbol = t.symbol
--- WHERE t.end_date = CURRENT_DATE  -- ✅ Expired records only
+-- WHERE t.end_date = CURRENT_DATE  -- Expired records only
 -- LIMIT 1;
 
 
