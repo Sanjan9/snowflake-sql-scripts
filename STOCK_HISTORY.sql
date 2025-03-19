@@ -1,9 +1,9 @@
 USE WAREHOUSE COMPUTE_WH;
 
--- ❌ Remove old table (if it exists)
+--  Remove old table (if it exists)
 DROP TABLE IF EXISTS MY_DATABASE.MY_SCHEMA.STOCK_HISTORY;
 
--- ✅ Create new table
+--  Create new table
 CREATE OR REPLACE TABLE MY_DATABASE.MY_SCHEMA.STOCK_HISTORY (  
     symbol STRING,  
     datetime TIMESTAMP,  
